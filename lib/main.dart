@@ -1,5 +1,7 @@
-import 'package:bwaflutterbasic1/themes.dart';
+import 'package:bwaflutterbasic1/pages/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:bwaflutterbasic1/themes.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,9 +27,10 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: Colors.blue,
+        textTheme: GoogleFonts.poppinsTextTheme(),
       ),
       // home: const MyHomePage(title: 'Flutter BWA Basic'),
-      home: const HomeBasicLatihan(),
+      home: const HomePageMain(),
     );
   }
 }
@@ -46,7 +49,12 @@ class _HomeBasicLatihanState extends State<HomeBasicLatihan> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: const Text('Latihan Basic 1'),
+        title: Center(
+          child: Text(
+            'Latihan Basic 1',
+            style: GoogleFonts.poppins(),
+          ),
+        ),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -58,14 +66,20 @@ class _HomeBasicLatihanState extends State<HomeBasicLatihan> {
               'resources/images/primary.png',
               width: 140,
             ),
-            const Text(
+            Text(
               'Hello Flutter BWA',
-              style: TextStyle(
-                  color: colorPrimaryText, fontWeight: FontWeight.bold),
+              style: GoogleFonts.poppins().copyWith(
+                color: colorPrimaryText,
+                fontWeight: FontWeight.bold,
+                fontSize: 24,
+              ),
             ),
             Text(
               'Halo',
-              style: Theme.of(context).textTheme.headline4,
+              style: GoogleFonts.poppins().copyWith(
+                fontWeight: FontWeight.w400,
+                fontSize: 20,
+              ),
             ),
           ],
         ),
