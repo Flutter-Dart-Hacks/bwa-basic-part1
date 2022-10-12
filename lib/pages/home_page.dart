@@ -65,36 +65,109 @@ class _HomePageMainState extends State<HomePageMain> {
     );
   }
 
+// Show dan hide dialog dengan data
+// https://stackoverflow.com/questions/59768792/how-to-get-a-value-from-a-dialog-in-flutter
   showDialogBelakang(BuildContext context) {
     showModalBottomSheet(
       context: context,
+      barrierColor: Colors.transparent,
+      backgroundColor: Colors.transparent,
       builder: (BuildContext context) {
         return Container(
-          height: 200,
-          color: Colors.white,
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.only(
+          height: 400,
+          padding: const EdgeInsets.symmetric(
+            vertical: 30,
+            horizontal: 20,
+          ),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(
+              color: Colors.transparent,
+            ),
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(30),
               topRight: Radius.circular(30),
             ),
           ),
           child: Column(
-            children: const [],
+            children: [
+              const Text(
+                'Update Photo',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w600,
+                  color: colorPrimaryText,
+                ),
+              ),
+              const SizedBox(
+                height: 12,
+              ),
+              const Text(
+                'You are only able to change\nthe picture profile once',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w400,
+                  color: colorSecondaryText,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              SizedBox(
+                width: 224,
+                height: 55,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context, 'nilai data saja dari dialog');
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: colorOrange,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(16),
+                        ),
+                      )),
+                  child: const Text(
+                    'Continue',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+            ],
           ),
         );
       },
       isDismissible: true,
-    );
+    ).then((value) {
+      if (value != null) {
+        print(value);
+      }
+    }).catchError((error) {
+      // Print error
+      print(error);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    ScrollController scollBarController =
+        ScrollController(initialScrollOffset: 0.0);
+
     return Scaffold(
       backgroundColor: colorBgAbu,
       body: SafeArea(
         child: Container(
           padding: const EdgeInsets.all(8),
           child: Scrollbar(
+            controller: scollBarController,
             trackVisibility: true,
             child: SingleChildScrollView(
               child: Center(
