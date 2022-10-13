@@ -68,6 +68,8 @@ class _HomePageMainState extends State<HomePageMain> {
 // Show dan hide dialog dengan data
 // https://stackoverflow.com/questions/59768792/how-to-get-a-value-from-a-dialog-in-flutter
   showDialogBelakang(BuildContext context) {
+    // Menggunakan promise untuk mengambil data dari dialog
+    // https://stackoverflow.com/questions/59768792/how-to-get-a-value-from-a-dialog-in-flutter
     showModalBottomSheet(
       context: context,
       barrierColor: Colors.transparent,
